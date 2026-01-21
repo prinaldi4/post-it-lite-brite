@@ -1,0 +1,206 @@
+:root {
+    --color-default: #ffc;
+    --color-border-default: #e8e8a8;
+    --color-pink: #FF9ECE;
+    --color-pink-border: #FF7AB5;
+    --color-green: #9EFFCE;
+    --color-green-border: #7AFFB5;
+    --color-blue: #9ECEFF;
+    --color-blue-border: #7AB5FF;
+}
+
+body {
+    background-color: #333;
+    color: #f0f0f0;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 2rem;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6;
+    font-size: 2.5rem;
+    color: white;
+}
+
+#lite-brite-grid {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    gap: 15px;
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    border: 8px solid #4a4a4a;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4), inset 0 0 10px rgba(0,0,0,0.5);
+    margin-bottom: 25px;
+}
+
+.bottom-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background-color: #1a1a1a;
+    padding: 15px 25px;
+    border-radius: 10px;
+    border: 4px solid #4a4a4a;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: fit-content;
+}
+
+.instructions {
+    display: flex;
+    align-items: center;
+}
+
+.instructions ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.instructions li {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.instruction-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    margin-right: 8px;
+    display: inline-block;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.instruction-dot.pink {
+    background-color: var(--color-pink);
+    border: 1px solid var(--color-pink-border);
+}
+
+.instruction-dot.green {
+    background-color: var(--color-green);
+    border: 1px solid var(--color-green-border);
+}
+
+.instruction-dot.blue {
+    background-color: var(--color-blue);
+    border: 1px solid var(--color-blue-border);
+}
+
+.instruction-dot.default {
+    background-color: var(--color-default);
+    border: 1px solid var(--color-border-default);
+}
+
+.peg-square {
+    width: 70px;
+    height: 70px;
+    background-color: var(--color-default);
+    border: 1px solid var(--color-border-default);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.1s, box-shadow 0.3s, background-color 0.3s;
+    position: relative;
+}
+
+.peg-square:active {
+    transform: scale(0.95);
+}
+
+.peg-square.lit-pink {
+    background-color: var(--color-pink);
+    border-color: var(--color-pink-border);
+    box-shadow: 0 0 10px var(--color-pink), 0 0 20px var(--color-pink), 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.peg-square.lit-green {
+    background-color: var(--color-green);
+    border-color: var(--color-green-border);
+    box-shadow: 0 0 10px var(--color-green), 0 0 20px var(--color-green), 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.peg-square.lit-blue {
+    background-color: var(--color-blue);
+    border-color: var(--color-blue-border);
+    box-shadow: 0 0 10px var(--color-blue), 0 0 20px var(--color-blue), 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.light {
+    width: 85%;
+    height: 85%;
+    background-color: white;
+    border-radius: 10%;
+    opacity: 0;
+    transition: opacity 0.3s, box-shadow 0.3s;
+    pointer-events: none;
+}
+
+.peg-square.lit-pink .light,
+.peg-square.lit-green .light,
+.peg-square.lit-blue .light {
+    opacity: 0.4;
+    box-shadow: 0 0 10px white, 0 0 20px white;
+}
+
+button {
+    padding: 12px 24px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: #e74c3c;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    height: fit-content;
+}
+
+button:hover {
+    background-color: #ff6b6b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .bottom-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .instructions ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    #lite-brite-grid {
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .peg-square {
+        width: 50px;
+        height: 50px;
+    }
+}
